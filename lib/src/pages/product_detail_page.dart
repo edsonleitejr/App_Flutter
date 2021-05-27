@@ -27,7 +27,7 @@ class ProductDetailPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Detail Page"),
+        title: const Text("Aviso"),
       ),
       body: args.selectedProductOrId.fold(
         _buildFromProduct,

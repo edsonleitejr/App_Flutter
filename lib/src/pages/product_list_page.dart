@@ -19,7 +19,7 @@ class ProductListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Master Page"),
+        title: const Text("Avisos"),
       ),
       floatingActionButton: FloatingActionButton.extended(
         label: Text("Direct Navigation"),

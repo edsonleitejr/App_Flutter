@@ -68,7 +68,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BottomNavigationBar Sample'),
+        title: const Text('Edson'),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -77,20 +77,20 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         unselectedItemColor: Colors.blue,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: 'Visitas',
+            icon: Icon(Icons.feedback),
+            label: 'Avisos',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.departure_board),
+            icon: Icon(Icons.list),
             label: 'Vez',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.card_travel),
-            label: 'Business',
+            icon: Icon(Icons.local_shipping),
+            label: 'Viagens',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.my_location),
-            label: 'School',
+            icon: Icon(Icons.card_travel),
+            label: 'Minhas viagens',
           ),
         ],
         currentIndex: _selectedIndex,
