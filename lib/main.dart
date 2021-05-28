@@ -11,12 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Riverpod Master > Detail',
+      title: 'Empresa',
       home: MyStatefulWidget(),
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      debugShowCheckedModeBanner: false,
       initialRoute: ProductListPage.routeName,
       routes: {
         ProductListPage.routeName: (context) => ProductListPage(),
@@ -39,24 +38,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Visitas',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Visitas',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: School',
-      style: optionStyle,
-    ),
-  ];
+  static const List<Widget> _widgetOptions = <Widget>[];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -64,39 +46,59 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     });
   }
 
+  final PageViewController = PageController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    PageViewController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Edson'),
-      ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: Colors.blue,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.feedback),
-            label: 'Avisos',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: 'Vez',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.local_shipping),
-            label: 'Viagens',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.card_travel),
-            label: 'Minhas viagens',
-          ),
+      // appBar: AppBar(
+      //title: const Text('Edson'),
+      //  ),
+      body: PageView(
+        controller: PageViewController,
+        children: [
+          ProductListPage(),
+          Container(),
+          Container(),
+          Container(),
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        onTap: _onItemTapped,
       ),
+      bottomNavigationBar: AnimatedBuilder(
+          animation: PageViewController,
+          builder: (context, snapshot) {
+            return BottomNavigationBar(
+              currentIndex: PageViewController?.page?.round() ?? 0,
+              onTap: (index) {
+                PageViewController.jumpToPage(index);
+              },
+              unselectedItemColor: Colors.blue,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.feedback),
+                  label: 'Avisos',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.list),
+                  label: 'Vez',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.local_shipping),
+                  label: 'Viagens',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.card_travel),
+                  label: 'Minhas viagens',
+                ),
+              ],
+              selectedItemColor: Colors.blue,
+            );
+          }),
     );
   }
 }
