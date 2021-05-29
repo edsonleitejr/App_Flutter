@@ -2,7 +2,7 @@ import 'package:ds_master_detail/src/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetail extends StatelessWidget {
-  final Product product;
+  final Notifications product;
 
   const ProductDetail({Key key, this.product}) : super(key: key);
 

@@ -8,7 +8,7 @@ extension PrintDate on DateTime {
 }
 
 @immutable
-class Product {
+class Notifications {
   final int id;
   final String title;
 
@@ -23,7 +23,7 @@ class Product {
           "...")
       : _description;
 
-  const Product({
+  const Notifications({
     @required this.id,
     @required this.title,
     @required String description,

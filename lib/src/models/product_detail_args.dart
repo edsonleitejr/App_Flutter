@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 
 @immutable
 class ProductDetailArgs {
-  final Either<Product, int> selectedProductOrId;
+  final Either<Notifications, int> selectedProductOrId;
 
   const ProductDetailArgs(this.selectedProductOrId);
 }

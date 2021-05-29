@@ -8,8 +8,8 @@ class ProductList extends StatelessWidget {
     @required this.onTap,
   }) : super(key: key);
 
-  final List<Product> productList;
-  final Function(Product) onTap;
+  final List<Notifications> productList;
+  final Function(Notifications) onTap;
 
   @override
   Widget build(BuildContext context) {
