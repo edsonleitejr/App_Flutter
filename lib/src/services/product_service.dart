@@ -9,22 +9,22 @@ class NetworkException {
   NetworkException(this.message);
 }
 
-class ProductService {
-  Future<List<Product>> getProducts() async {
+class NotificationService {
+  Future<List<Notifications>> getNotifications() async {
     try {
       await _shouldError("Couldn't fetch product list.");
 
-      return kProductList;
+      return listNotifications;
     } on NetworkException catch (e) {
       return Future.error(e.message);
     }
   }
 
-  Future<Product> getProductById(int id) async {
+  Future<Notifications> getProductById(int id) async {
     try {
       await _shouldError("Couldn't fetch product by ID.");
 
-      return kProductList.firstWhere(
+      return listNotifications.firstWhere(
         (element) => element.id == id,
         orElse: () => throw NetworkException("Couldn't fetch product by ID."),
       );
