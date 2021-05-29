@@ -53,7 +53,7 @@ class NotificationDetails extends StatelessWidget {
           ),
           Text(notification.dateCreated),
           SizedBox(
-            height: 10,
+            height: 30,
           ),
           Text(notification.description()),
         ]),
