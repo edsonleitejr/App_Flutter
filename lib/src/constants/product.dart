@@ -13,7 +13,7 @@ final List<Notifications> listNotifications = [
     title: "Eye of Newt",
     dateCreated: DateTime(2020, 11, 17),
     description:
-        "Ground round venison brisket, swine pork loin turducken rump burgdoggen",
+        "Ground round nison brisket, swine pork loin turducken rump burgdoggen",
   ),
   Notifications(
       id: 2,
@@ -26,7 +26,7 @@ final List<Notifications> listNotifications = [
     title: "Crystal Ball",
     dateCreated: DateTime(2020, 11, 19),
     description:
-        "Ribeye biltong boudin venison meatloaf rump fatback cow prosciutto strip steak pork loin burgdoggen. Ham hock chuck shoulder jowl. Drumstick salami shoulder pork chop short ribs kielbasa sirloin frankfurter. Leberkas drumstick kielbasa, jowl chicken pork chop frankfurter prosciutto fatback shankle shoulder buffalo sirloin swine beef",
+        "Ribeye biltongasa boudin venison meatloaf rump fatback cow prosciutto strip steak pork loin burgdoggen. Ham hock chuck shoulder jowl. Drumstick salami shoulder pork chop short ribs kielbasa sirloin frankfurter. Leberkas drumstick kielbasa, jowl chicken pork chop frankfurter prosciutto fatback shankle shoulder buffalo sirloin swine beef",
   ),
   Notifications(
     id: 4,
