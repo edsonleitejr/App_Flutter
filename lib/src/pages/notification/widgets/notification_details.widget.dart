@@ -1,11 +1,12 @@
-import 'package:ds_master_detail/src/models/product_model.dart';
+import 'package:ds_master_detail/src/models/notification_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class NotificationDetails extends StatelessWidget {
   const NotificationDetails({
     @required this.notification,
   });
-  final Notifications notification;
+  final NotificationModel notification;
 
   @override
   Widget build(BuildContext context) {
@@ -14,34 +15,45 @@ class NotificationDetails extends StatelessWidget {
         title: Text('Detalhes do aviso'),
         backgroundColor: Colors.blue[900],
       ),
-      body: Container(
-        margin: EdgeInsets.all(10),
-        child: Column(
-          children: [
-            _buildInformation(),
-            Container(
-              width: 230,
-              child: ElevatedButton.icon(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(Icons.arrow_back),
-                label: Text('Voltar'),
-              ),
-            )
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.all(10),
+          child: Column(
+            children: [
+              _buildInformation(),
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      width: 230,
+                      margin: EdgeInsets.only(
+                          left: 3, right: 3, top: 15, bottom: 10),
+                      child: ElevatedButton.icon(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: Icon(Icons.arrow_back),
+                        label: Text('Voltar'),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 
   _buildInformation() {
+    var messageHtml = notification.mensagem;
     return Card(
       child: Container(
         margin: EdgeInsets.all(30),
         child: Column(children: [
           Text(
-            notification.title,
+            notification.titulo,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.amberAccent,
@@ -51,11 +63,11 @@ class NotificationDetails extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Text(notification.dateCreated),
+          Text(notification.data_publicacao),
           SizedBox(
             height: 10,
           ),
-          Text(notification.description()),
+          Html(data: messageHtml)
         ]),
       ),
     );

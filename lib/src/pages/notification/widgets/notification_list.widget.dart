@@ -1,7 +1,6 @@
-import 'package:ds_master_detail/src/models/product_model.dart';
+import 'package:ds_master_detail/src/models/notification_model.dart';
 import 'package:ds_master_detail/src/pages/notification/widgets/notification_details.widget.dart';
-import 'package:ds_master_detail/src/services/product_service.dart';
-import 'package:ds_master_detail/src/widgets/error_message.dart';
+import 'package:ds_master_detail/src/services/notification_service.dart';
 import 'package:ds_master_detail/src/widgets/loading.dart';
 import 'package:flutter/material.dart';
 
@@ -11,11 +10,24 @@ class NotificationList extends StatelessWidget {
     final NotificationService _noticationService = NotificationService();
     return Container(
       child: FutureBuilder(
-        future: _noticationService.getNotifications(),
+        future: _noticationService.getNotification(),
         builder: (BuildContext context,
-            AsyncSnapshot<List<Notifications>> snapshot) {
+            AsyncSnapshot<List<NotificationModel>> snapshot) {
           if (snapshot.hasError) {
-            return ErrorMessage(snapshot.error);
+            return Container(
+                child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Algum erro ocorreu na comunicacao com a API'),
+                SizedBox(height: 20,),
+                ElevatedButton(
+                    onPressed: () {
+                      _noticationService.getNotification();
+                    },
+                    child: Text('Tentar novamente'))
+              ],
+            )));
           }
           if (!snapshot.hasData) {
             return Loading();
@@ -50,9 +62,9 @@ class NotificationList extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     Expanded(
-                                      child: Text(item.title),
+                                      child: Text(item.titulo),
                                     ),
-                                    Text(item.dateCreated),
+                                    Text(item.data_publicacao),
                                     SizedBox(
                                       width: 15,
                                     ),
