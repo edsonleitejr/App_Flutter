@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.3  
+  flutter_html: ^2.1.0
   
   
   flutter_riverpod: ^0.12.1
